@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant?: "default" | "primary" | "dark";
+  class?: string;
+}
+
+const { variant = "default", class: className = "", ...rest } = Astro.props;
+
+const variants = {
+  default: "bg-border/50 text-text-secondary",
+  primary: "bg-primary/10 text-primary-muted",
+  dark: "bg-background-dark text-text-inverse",
+};
+
+const baseStyles =
+  "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide";
+---
+
+<span class:list={[baseStyles, variants[variant], className]} {...rest}>
+  <slot />
+</span>

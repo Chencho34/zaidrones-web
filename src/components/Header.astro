@@ -1,0 +1,99 @@
+---
+import Button from "./ui/Button.astro";
+
+const navLinks = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Equipo", href: "#equipo" },
+  { label: "Proyectos", href: "#proyectos" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 text-text font-bold text-xl tracking-tight">
+        <span class="text-primary">Zai</span>Drones
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-text-secondary transition-colors duration-200 hover:text-text"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden md:block">
+        <Button href="#contacto" variant="primary">Cotizar Ahora</Button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden flex items-center justify-center w-10 h-10 text-text-secondary hover:text-text transition-colors"
+        aria-label="Abrir menú"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-background border-t border-border">
+    <div class="px-4 py-4 space-y-3">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="block text-sm font-medium text-text-secondary hover:text-text py-2 transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <Button href="#contacto" variant="primary" class="w-full mt-4">
+        Cotizar Ahora
+      </Button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("header");
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  // Header scroll effect
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      header?.classList.add("bg-background/80", "backdrop-blur-lg", "shadow-sm", "shadow-border/50");
+    } else {
+      header?.classList.remove("bg-background/80", "backdrop-blur-lg", "shadow-sm", "shadow-border/50");
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  mobileMenuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
+  });
+</script>

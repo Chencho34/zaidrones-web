@@ -1,0 +1,71 @@
+---
+import SectionHeader from "./ui/SectionHeader.astro";
+import Card from "./ui/Card.astro";
+
+const lines = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
+    title: "Venta de Equipo",
+    description:
+      "Distribuidor oficial DJI Enterprise y Pix4D. Drones industriales, payloads especializados y software de fotogrametría para proyectos de alto nivel.",
+    features: ["DJI Matrice 400/4T/4E", "DJI Dock 3", "Zenmuse H30T, L3, P1", "PIX4Dmapper"],
+    href: "#equipo",
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>`,
+    title: "Servicios Profesionales",
+    description:
+      "Captura y procesamiento de datos aéreos para industria. Ortomosaicos, nubes de puntos, inspecciones y más.",
+    features: ["Ortomosaicos", "Nubes de Puntos", "Inspección Aérea", "Foto y Video"],
+    href: "#servicios",
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+    title: "Servicio Administrado 24/7",
+    description:
+      "Vigilancia perimetral aérea continua con DJI Dock 3. Nosotros operamos, usted se protege.",
+    features: ["Pilotos especializados", "Centro de monitoreo", "Reportes automáticos", "Cobertura 24/7"],
+    href: "#servicio-administrado",
+  },
+];
+---
+
+<section id="lineas-negocio" class="relative py-20 md:py-28 bg-background">
+  <!-- Top gradient transition from dark to light -->
+  <!-- <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background-dark to-transparent pointer-events-none"></div> -->
+  
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      title="Tres líneas. Un solo socio estratégico."
+      subtitle="Desde la venta de equipo hasta la operación completa de seguridad aérea."
+    />
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {lines.map((line) => (
+        <Card>
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6" set:html={line.icon} />
+          <h3 class="text-xl font-bold text-text">{line.title}</h3>
+          <p class="mt-3 text-text-secondary leading-relaxed">{line.description}</p>
+          <ul class="mt-5 space-y-2">
+            {line.features.map((feature) => (
+              <li class="flex items-center gap-2 text-sm text-text-secondary">
+                <svg class="w-4 h-4 text-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <div class="mt-6">
+            <a href={line.href} class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-hover transition-colors">
+              Conocer más
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

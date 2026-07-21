@@ -1,0 +1,55 @@
+---
+import SectionHeader from "./ui/SectionHeader.astro";
+
+const faqs = [
+  {
+    question: "¿Necesito comprar equipo para usar sus servicios?",
+    answer: "No. Nuestros servicios profesionales (ortomosaicos, inspecciones, monitoreo puntual) se realizan con nuestro propio equipo. Solo necesita adquirir equipo si quiere operar drones internamente.",
+  },
+  {
+    question: "¿Cómo funciona el servicio administrado 24/7?",
+    answer: "Instalamos un DJI Dock 3 en sus instalaciones, programamos rutas de patrullaje autónomas y nuestros pilotos especializados monitorean en tiempo real desde nuestro Centro de Monitoreo. Ante cualquier evento, el dron despega automáticamente y le notificamos al instante.",
+  },
+  {
+    question: "¿Qué sectores atienden?",
+    answer: "Trabajamos con manufactura, construcción, energía, logística, parques industriales, sector público y seguridad. Cualquier industria que necesite datos aéreos precisos o vigilancia avanzada puede beneficiarse.",
+  },
+  {
+    question: "¿Cuánto cuesta el servicio administrado?",
+    answer: "El costo depende del número de Dock 3 instalados, la cobertura requerida y los servicios incluidos. Contáctenos para una cotización personalizada sin compromiso.",
+  },
+  {
+    question: "¿Ofrecen capacitación para nuestro equipo?",
+    answer: "Sí. Ofrecemos programas de capacitación teórica y práctica en pilotaje y operación de drones, tanto para uso recreativo como industrial.",
+  },
+  {
+    question: "¿Cuál es la zona de cobertura?",
+    answer: "Tenemos cobertura en toda la República Mexicana. Nuestros servicios profesionales y el servicio administrado están disponibles a nivel nacional.",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-background">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      title="Preguntas frecuentes"
+      subtitle="Resolvemos sus dudas más comunes."
+    />
+
+    <div class="space-y-4">
+      {faqs.map((faq) => (
+        <details class="group rounded-xl border border-border bg-white overflow-hidden">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer select-none hover:bg-background transition-colors">
+            <span class="font-semibold text-text pr-4">{faq.question}</span>
+            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-text-secondary leading-relaxed">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

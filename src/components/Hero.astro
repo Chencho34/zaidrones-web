@@ -1,0 +1,72 @@
+---
+import Button from "./ui/Button.astro";
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden pt-20">
+  <!-- Background image -->
+  <div class="absolute inset-0">
+    <video
+      src="https://zaidrones.com/wp-content/uploads/2022/10/home.mp4"
+      alt=""
+      class="w-full h-full object-cover"
+      loading="eager"
+      autoplay
+      muted
+      loop
+    />
+    <!-- Dark overlay for text readability -->
+    <div class="absolute inset-0 bg-background-dark/10"></div>
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-background-dark/50 via-background-dark/70 to-background-dark/90"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Headline -->
+      <h1 class="text-4xl font-extrabold tracking-tight text-text-inverse sm:text-5xl md:text-6xl lg:text-7xl animate-slide-up">
+        No solo instalamos un drone. 
+        <span class="text-primary mt-2"> Administramos toda la operación.</span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="mt-6 text-lg text-text-inverse/70 max-w-2xl mx-auto sm:text-xl animate-slide-up" style="animation-delay: 0.1s;">
+        Drones profesionales para seguridad, inspección y captura de datos. Distribuidor oficial DJI Enterprise en México con +12 años de experiencia.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.2s;">
+        <Button href="#contacto" variant="primary" class="w-full sm:w-auto text-base px-8 py-4">
+          Solicitar Demo Gratuita
+        </Button>
+        <Button href="#servicios" variant="outline" class="w-full sm:w-auto text-white px-8 py-4">
+          Ver Servicios
+        </Button>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-sm text-text-inverse/70 animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          Distribuidor Oficial DJI
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          +12 Años de Experiencia
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          +300 Clientes Satisfechos
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background-dark to-transparent"></div>
+</section>

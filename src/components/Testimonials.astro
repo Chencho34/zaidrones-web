@@ -1,0 +1,48 @@
+---
+import SectionHeader from "./ui/SectionHeader.astro";
+
+const testimonials = [
+  {
+    quote: "Desde que implementamos el servicio administrado, los incidentes en nuestra planta se redujeron drásticamente. El monitoreo 24/7 nos da una tranquilidad que la seguridad tradicional no podía ofrecer.",
+    author: "Director de Seguridad",
+    company: "Parque Industrial Monterrey",
+  },
+  {
+    quote: "Los ortomosaicos que nos entregan cada semana nos permiten tomar decisiones más rápidas y precisas en obra. La calidad del equipo y el servicio es excepcional.",
+    author: "Gerente de Proyectos",
+    company: "Constructora Regional",
+  },
+  {
+    quote: "ZaiDrones no solo vendió el equipo, nos capacitó y nos dio soporte constante. Son un socio estratégico real para nuestra operación.",
+    author: "Jefe de Mantenimiento",
+    company: "Planta Energética",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-background">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      title="Lo que dicen nuestros clientes"
+      subtitle="Más de 300 empresas confían en ZaiDrones para sus operaciones críticas."
+    />
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <div class="rounded-xl border border-border bg-white p-8 relative">
+          <!-- Quote mark -->
+          <svg class="w-10 h-10 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
+          </svg>
+
+          <p class="text-text-secondary leading-relaxed italic">"{t.quote}"</p>
+
+          <div class="mt-6 pt-6 border-t border-border">
+            <div class="font-semibold text-text text-sm">{t.author}</div>
+            <div class="text-xs text-text-secondary mt-0.5">{t.company}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

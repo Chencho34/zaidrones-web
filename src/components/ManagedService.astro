@@ -1,0 +1,111 @@
+---
+import Badge from "./ui/Badge.astro";
+import Button from "./ui/Button.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "Instalación",
+    description: "Instalamos y configuramos el DJI Dock 3 en las instalaciones de su empresa.",
+  },
+  {
+    number: "02",
+    title: "Programación",
+    description: "Definimos rutas de patrullaje autónomas para perímetros, accesos y áreas críticas.",
+  },
+  {
+    number: "03",
+    title: "Monitoreo",
+    description: "Pilotos especializados monitorean en tiempo real desde nuestro Centro de Monitoreo.",
+  },
+  {
+    number: "04",
+    title: "Verificación",
+    description: "Ante cualquier evento, el dron despega automáticamente para inspeccionar.",
+  },
+  {
+    number: "05",
+    title: "Notificación",
+    description: "Alertamos inmediatamente al personal de seguridad de su organización.",
+  },
+  {
+    number: "06",
+    title: "Reporte",
+    description: "El dron regresa al Dock a recargar y generamos reportes de cada operación.",
+  },
+];
+
+const comparison = [
+  { tradicional: "Patrullajes limitados", zaidrones: "Vigilancia aérea programada" },
+  { tradicional: "Verificación lenta", zaidrones: "Verificación en tiempo real" },
+  { tradicional: "Supervisión manual", zaidrones: "Monitoreo remoto especializado" },
+  { tradicional: "Cobertura terrestre", zaidrones: "Cobertura aérea completa" },
+];
+---
+
+<section id="servicio-administrado" class="py-20 md:py-28 bg-background-dark text-text-inverse relative overflow-hidden">
+  <!-- Subtle glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <Badge variant="primary" class="mb-4">Servicio Premium</Badge>
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+        Vigilancia Aérea 24/7
+      </h2>
+      <p class="mt-4 text-lg text-text-inverse/70 max-w-2xl mx-auto">
+        No solo instalamos un drone. Administramos toda la operación para que usted se enfoque en lo que importa.
+      </p>
+    </div>
+
+    <!-- How it works -->
+   <div
+  class="flex overflow-x-scroll snap-x snap-mandatory gap-6 mb-20 pb-4 scrollbar-hide"
+>
+  {steps.map((step) => (
+    <div
+      class="snap-center shrink-0 w-[400px] group relative rounded-xl border border-text-inverse/10 bg-text-inverse/5 p-6 hover:border-primary/30 transition-all duration-300"
+    >
+      <span class="text-4xl font-extrabold text-primary/20 group-hover:text-primary/40 transition-colors">
+        {step.number}
+      </span>
+
+      <h3 class="mt-3 text-lg font-bold text-text-inverse">
+        {step.title}
+      </h3>
+
+      <p class="mt-2 text-sm text-text-inverse/60 leading-relaxed">
+        {step.description}
+      </p>
+    </div>
+  ))}
+    </div>
+
+    <!-- Comparison table -->
+    <div class="max-w-3xl mx-auto">
+      <h3 class="text-xl font-bold text-center text-text-inverse mb-8">¿Seguridad tradicional vs. ZaiDrones?</h3>
+      <div class="rounded-xl border border-text-inverse/10 overflow-hidden">
+        <div class="grid grid-cols-2 text-sm font-semibold">
+          <div class="px-6 py-4 bg-text-inverse/5 text-text-inverse/60">Seguridad Tradicional</div>
+          <div class="px-6 py-4 bg-primary/20 text-primary">Servicio Administrado ZaiDrones</div>
+        </div>
+        {comparison.map((row, i) => (
+          <div class:list={[
+            "grid grid-cols-2 text-sm border-t border-text-inverse/10",
+            i % 2 === 0 ? "bg-transparent" : "bg-text-inverse/5",
+          ]}>
+            <div class="px-6 py-4 text-text-inverse/50 line-through decoration-text-inverse/20">{row.tradicional}</div>
+            <div class="px-6 py-4 text-text-inverse font-medium">{row.zaidrones}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <Button href="#contacto" variant="primary" class="text-base px-8 py-4">
+          Solicitar Demo Gratuita
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
