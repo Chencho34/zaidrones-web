@@ -1,15 +1,14 @@
 ---
 import Button from "./ui/Button.astro";
+import bgHeroVideo from "../assets/videos/hero-bg-video.mp4";
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
   <!-- Background image -->
   <div class="absolute inset-0">
     <video
-      src="https://zaidrones.com/wp-content/uploads/2022/10/home.mp4"
-      alt=""
+      src={bgHeroVideo}
       class="w-full h-full object-cover"
-      loading="eager"
       autoplay
       muted
       loop
@@ -25,11 +24,11 @@ import Button from "./ui/Button.astro";
       <!-- Headline -->
       <h1 class="text-4xl font-extrabold tracking-tight text-text-inverse sm:text-5xl md:text-6xl lg:text-7xl animate-slide-up">
         No solo instalamos un drone. 
-        <span class="text-primary mt-2"> Administramos toda la operación.</span>
+        <span class="text-accent mt-2"> Administramos toda la operación.</span>
       </h1>
 
       <!-- Subtítulo -->
-      <p class="mt-6 text-lg text-text-inverse/70 max-w-2xl mx-auto sm:text-xl animate-slide-up" style="animation-delay: 0.1s;">
+      <p class="mt-6 text-lg text-text-inverse/70 max-w-2xl mx-auto sm:text-lg     animate-slide-up" style="animation-delay: 0.1s;">
         Drones profesionales para seguridad, inspección y captura de datos. Distribuidor oficial DJI Enterprise en México con +12 años de experiencia.
       </p>
 

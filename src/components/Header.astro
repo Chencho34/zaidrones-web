@@ -1,5 +1,7 @@
 ---
 import Button from "./ui/Button.astro";
+import logo from "../assets/logo-zaidrones.png"
+import { Image } from "astro:assets";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
@@ -11,32 +13,28 @@ const navLinks = [
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  class="absolute top-0 left-0 right-0 z-50 transition-all duration-300"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center justify-between h-16 md:h-20">
+    <nav class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 text-text font-bold text-xl tracking-tight">
-        <span class="text-primary">Zai</span>Drones
+      <a href="/" class="flex items-center gap-0.5 text-text font-bold text-2xl tracking-tight">
+        <Image src={logo} alt="ZaiDrones Logo" class='w-44' />
+        <!-- <span class="text-primary">Zai</span>Drones -->
       </a>
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-8">
         {navLinks.map((link) => (
           <a
+            id="links"
             href={link.href}
-            class="text-sm font-medium text-text-secondary transition-colors duration-200 hover:text-text"
+            class="text-sm font-medium transition-colors duration-200 hover:text-text"
           >
             {link.label}
           </a>
         ))}
       </div>
-
-      <!-- CTA -->
-      <div class="hidden md:block">
-        <Button href="#contacto" variant="primary">Cotizar Ahora</Button>
-      </div>
-
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
@@ -72,15 +70,20 @@ const navLinks = [
   const header = document.getElementById("header");
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
+  const navLinks = document.querySelectorAll("#links");
 
   // Header scroll effect
   let lastScroll = 0;
   window.addEventListener("scroll", () => {
     const currentScroll = window.scrollY;
     if (currentScroll > 50) {
-      header?.classList.add("bg-background/80", "backdrop-blur-lg", "shadow-sm", "shadow-border/50");
+      header?.classList.add("bg-background/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
+      navLinks?.forEach((link) => link.classList.add("text-gray-900"))
+      navLinks?.forEach((link) => link.classList.remove("text-white"))
     } else {
-      header?.classList.remove("bg-background/80", "backdrop-blur-lg", "shadow-sm", "shadow-border/50");
+      header?.classList.remove("bg-background/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
+      navLinks?.forEach((link) => link.classList.remove("text-gray-900"))
+      navLinks?.forEach((link) => link.classList.add("text-white"))
     }
     lastScroll = currentScroll;
   });
