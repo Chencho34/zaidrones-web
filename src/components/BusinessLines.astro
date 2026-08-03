@@ -41,28 +41,30 @@ const lines = [
     />
 
     <div class="grid md:grid-cols-3 gap-8">
-      {lines.map((line) => (
+      {lines.map((line, index) => (
         <Card>
-          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6" set:html={line.icon} />
-          <h3 class="text-xl font-bold text-text">{line.title}</h3>
-          <p class="mt-3 text-text-secondary leading-relaxed">{line.description}</p>
-          <ul class="mt-5 space-y-2">
-            {line.features.map((feature) => (
-              <li class="flex items-center gap-2 text-sm text-text-secondary">
-                <svg class="w-4 h-4 text-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          <div class="">
+            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6" set:html={line.icon} />
+            <h3 class="text-xl font-bold text-text">{line.title}</h3>
+            <p class="mt-3 text-text-secondary leading-relaxed">{line.description}</p>
+            <ul class="mt-5 space-y-2">
+              {line.features.map((feature) => (
+                <li class="flex items-center gap-2 text-sm text-text-secondary">
+                  <svg class="w-4 h-4 text-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6">
+              <a href={line.href} class="gr inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-hover transition-colors">
+                Conocer más
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-                {feature}
-              </li>
-            ))}
-          </ul>
-          <div class="mt-6">
-            <a href={line.href} class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-hover transition-colors">
-              Conocer más
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+              </a>
+            </div>
           </div>
         </Card>
       ))}

@@ -1,4 +1,6 @@
 ---
+import SectionHeader from "./ui/SectionHeader.astro";
+
 const clients = [
   "Implang",
   "TecMonterrey",
@@ -6,22 +8,50 @@ const clients = [
   "Femsa",
   "Alfa",
   "Banorte",
+  "CFE",
+  "Chencho",
+  "Heineken",
+  "UANL",
+  "Tyasa",
+  "Ternium"
 ];
 ---
 
 <section class="pt-16 pb-32 border- border-text-inverse/10 bg-background-dark">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <p class="text-center text-sm font-medium text-text-inverse/50 uppercase tracking-widest mb-10">
-      Empresas que confían en nosotros
-    </p>
+    <h2 class="text-2xl font-bold tracking-tight text-white text-center my-14 max-w-4xl mx-auto">
+      Lleva a tu equipo al siguiente nivel, potenciando sus habilidades y preparándolos para el futuro
+    </h2>
 
-    <!-- Logos grid -->
-    <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 opacity-50">
-      {clients.map((client) => (
-        <div class="text-xl font-bold text-text-inverse/60 tracking-wide">
-          {client}
+    <!-- Logos marquee -->
+    <div class="marquee relative w-full overflow-hidden">
+      <div class="marquee__track flex w-max items-center">
+        <!-- Grupo 1 -->
+        <div class="marquee__group flex items-center gap-x-12 pr-12" aria-hidden="false">
+          {clients.map((client) => (
+            <div class="relative text-xl font-bold tracking-wide group isolate flex aspect-[16/10] shrink-0 items-center justify-center rounded-md text-text-inverse/70 transition duration-500 outline-none hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:ring-2 w-[150px] hover:text-white cursor-pointer">
+              {client}
+              <span aria-hidden="true" class="pointer-events-none absolute top-1.5 left-1.5 size-2.5 border-t border-l border-accent/35 transition duration-500 group-hover:border-accent group-focus-visible:border-accent sm:top-2 sm:left-2 sm:size-3"></span>
+              <span aria-hidden="true" class="pointer-events-none absolute top-1.5 right-1.5 size-2.5 border-t border-r border-accent/35 transition duration-500 group-hover:border-accent group-focus-visible:border-accent sm:top-2 sm:right-2 sm:size-3"></span>
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-1.5 left-1.5 size-2.5 border-b border-l border-accent/35 transition duration-500 group-hover:border-accent group-focus-visible:border-accent sm:bottom-2 sm:left-2 sm:size-3"></span>
+              <span aria-hidden="true" class="pointer-events-none absolute right-1.5 bottom-1.5 size-2.5 border-r border-b border-accent/35 transition duration-500 group-hover:border-accent group-focus-visible:border-accent sm:right-2 sm:bottom-2 sm:size-3"></span>
+            </div>
+          ))}
         </div>
-      ))}
+
+        <!-- Grupo 2 (duplicado, oculto a lectores de pantalla, cierra el loop) -->
+        <div class="marquee__group flex items-center gap-x-12 pr-12" aria-hidden="true">
+          {clients.map((client) => (
+            <div class="relative text-xl font-bold tracking-wide group isolate flex aspect-[16/10] shrink-0 items-center justify-center rounded-md text-text-inverse/70 transition duration-500 outline-none w-[150px] hover:text-white cursor-pointer">
+              {client}
+              <span aria-hidden="true" class="pointer-events-none absolute top-1.5 left-1.5 size-2.5 border-t border-l border-accent/35 sm:top-2 sm:left-2 sm:size-3"></span>
+              <span aria-hidden="true" class="pointer-events-none absolute top-1.5 right-1.5 size-2.5 border-t border-r border-accent/35 sm:top-2 sm:right-2 sm:size-3"></span>
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-1.5 left-1.5 size-2.5 border-b border-l border-accent/35 sm:bottom-2 sm:left-2 sm:size-3"></span>
+              <span aria-hidden="true" class="pointer-events-none absolute right-1.5 bottom-1.5 size-2.5 border-r border-b border-accent/35 sm:right-2 sm:bottom-2 sm:size-3"></span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
 
     <!-- Stats -->
@@ -45,3 +75,49 @@ const clients = [
     </div>
   </div>
 </section>
+
+<style>
+  .marquee {
+    --fade-size: 100px;
+    --speed: 32s;
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--fade-size),
+      #000 calc(100% - var(--fade-size)),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--fade-size),
+      #000 calc(100% - var(--fade-size)),
+      transparent 100%
+    );
+  }
+
+  .marquee__track {
+    animation: marquee-scroll 32s linear infinite;
+  }
+
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+      animation: none;
+    }
+    .marquee {
+      overflow-x: auto;
+    }
+  }
+</style>
+
+
