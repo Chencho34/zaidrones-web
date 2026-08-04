@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import SocialProof from "../components/SocialProof.astro";
 import BusinessLines from "../components/BusinessLines.astro";
@@ -11,24 +10,19 @@ import CaseStudies from "../components/CaseStudies.astro";
 import Testimonials from "../components/Testimonials.astro";
 import FAQ from "../components/FAQ.astro";
 import CTASection from "../components/CTASection.astro";
-import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
-  <Header />
-  <main>
-    <Hero />
-    <SocialProof />
-    <BusinessLines />
-    <ManagedService />
-    <ServicesGrid />
-    <ProductsShowcase />
-    <CaseStudies />
-    <Testimonials />
-    <FAQ />
-    <CTASection />
-  </main>
-  <Footer />
+<Layout title="Zaidrones - Landing" description="Drones profesionales para seguridad, inspección y captura de datos. Distribuidor oficial DJI Enterprise en México con +12 años de experiencia.">
+  <Hero />
+  <SocialProof />
+  <BusinessLines />
+  <ManagedService />
+  <ServicesGrid />
+  <ProductsShowcase />
+  <CaseStudies />
+  <Testimonials />
+  <FAQ />
+  <CTASection />
 </Layout>
 
 <script>

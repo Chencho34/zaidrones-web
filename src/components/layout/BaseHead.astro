@@ -1,0 +1,95 @@
+---
+import ibmPlexFont from '@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2?url'
+import onestFont from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url'
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "ZaiDrones — Drones Profesionales y Servicio Administrado 24/7",
+  description = "Distribuidor oficial DJI Enterprise en México. Venta de drones industriales, servicios de fotogrametría y servicio administrado de vigilancia perimetral 24/7.",
+  image = "/og-image.jpg",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://zaidrones.com");
+---
+
+<!-- Fonts Preload  -->
+<link rel="preload" href={onestFont}  as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={ibmPlexFont} as="font" type="font/woff2" crossorigin />
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- SEO -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="Armando Crescencio" />
+<meta name="keywords" content="" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:locale" content="es_MX" />
+<meta property="og:site_name" content="ZaiDrones - Landing" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- Robots -->
+<meta name="robots" content="index, follow" />
+
+<!-- Preconnect fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- JSON-LD Structured Data -->
+<!-- <script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://chencho-dev.vercel.app/#person",
+  "name": "Armando Crescencio",
+  "alternateName": "Chencho34",
+  "url": "https://chencho-dev.vercel.app/",
+  "image": "https://chencho-dev.vercel.app/avatar.webp",
+  "jobTitle": "Full Stack Developer",
+  "description": "": {
+    "@type": "ContactPoint",
+    "email": "armandocrescencio343@gmail.com",
+    "contactType": "personal"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Monterrey",
+    "addressRegion": "Nuevo León",
+    "addressCountry": "MX"
+  },
+  "sameAs": [
+    "https://github.com/Chencho34",
+    "https://www.linkedin.com/in/armando-cr/"
+  ],
+  "knowsAbout": [
+    "React", "Node.js", "TypeScript", "Next.js",
+    "Astro", "TailwindCSS", "PostgreSQL", "Docker"
+  ]
+})} /> -->

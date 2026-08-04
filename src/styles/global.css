@@ -1,25 +1,48 @@
 @import "tailwindcss";
 
 @theme {
+  /* ==========================
+    Colors
+  ========================== */
+
+  /* Background */
   --color-background: #F8FAFC;
   --color-background-dark: #222222;
-  --color-text: #0F172A;
-  --color-text-alt: #111827;
-  --color-primary: #F8FAFC;
-  --color-accent: #A3E635;
-  --color-primary-hover: #A3E635;
-  --color-text-secondary: #64748B;
-  --color-border: #E2E8F0;
-  /* --color-background-dark: #0F172A; */
-  --color-primary-muted: #65A30D;
-  --color-text-inverse: #F8FAFC;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Text */
+  --color-black: #0F172A;
+  --color-text-alt: #111827;
+  --color-text-inverse: #F8FAFC;
+  --color-text-secondary: #64748B;
+
+  /* Brand */
+  --color-primary: #F8FAFC;
+  --color-primary-muted: #65A30D;
+  --color-primary-hover: #A3E635;
+  --color-accent: #A3E635;
+
+  /* UI */
+  --color-border: #E2E8F0;
+
+  /* ==========================
+   Typography
+  ========================== */
+
+  --font-sans: "Onest Variable"  , ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Sans Variable", monospace, system-ui, sans-serif;
+
+  /* ==========================
+   Animations
+  ========================== */
 
   --animate-fade-in: fade-in 0.6s ease-out forwards;
   --animate-slide-up: slide-up 0.6s ease-out forwards;
   --animate-slide-in-left: slide-in-left 0.6s ease-out forwards;
 }
+
+/* ===================================
+   Keyframes
+=================================== */
 
 @keyframes fade-in {
   from {
@@ -52,7 +75,10 @@
   }
 }
 
-/* Scroll reveal utility */
+/* ===================================
+   Utilities
+=================================== */
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -66,20 +92,24 @@
 
 @layer base {
   html {
-      -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Smooth scroll */
-  html {
-    scroll-behavior: smooth;
+  body {
+    @apply bg-background text-text font-sans;
   }
 
   /* scrollbar minimalista */
-  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: #222222; }
   ::-webkit-scrollbar-thumb { background: #383838; border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: #444444; }
+
+  /* Fuerza font-display swap */
+  @font-face { font-family: 'Onest Variable'; font-display: swap; }
+  @font-face { font-family: 'IBM Plex Sans Variable'; font-display: swap; }
 }
 
 /* Focus visible for accessibility */
