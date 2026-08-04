@@ -5,48 +5,45 @@ import { Image } from "astro:assets";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
+  { label: "Nosotros", href: "#Nosotros" },
   { label: "Equipo", href: "#equipo" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Contacto", href: "#contacto" },
 ];
 ---
 
-<header
-  id="header"
-  class="absolute top-0 left-0 right-0 z-50 transition-all duration-300"
->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-0.5 text-text font-bold text-2xl tracking-tight">
-        <Image src={logo} alt="ZaiDrones Logo" class='w-44' />
-        <!-- <span class="text-primary">Zai</span>Drones -->
-      </a>
-
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-8">
-        {navLinks.map((link) => (
-          <a
+<header id="header" class="absolute top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-center sm:justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-0.5 text-text font-bold text-2xl tracking-tight">
+      <Image src={logo} alt="ZaiDrones Logo" class='w-44' />
+      <!-- <span class="text-primary">Zai</span>Drones -->
+    </a>
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <li>
+          <a 
             id="links"
             href={link.href}
             class="text-sm font-medium transition-colors duration-200 hover:text-accent"
           >
             {link.label}
           </a>
-        ))}
-      </div>
-      <!-- Mobile Menu Button -->
-      <button
-        id="mobile-menu-btn"
-        class="md:hidden flex items-center justify-center w-10 h-10 text-text-secondary hover:text-text transition-colors"
-        aria-label="Abrir menú"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </nav>
-  </div>
+        </li>
+      ))}
+    </ul>
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex items-center justify-center w-10 h-10 text-text-secondary hover:text-text transition-colors"
+      aria-label="Abrir menú"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-background border-t border-border">

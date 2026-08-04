@@ -64,9 +64,22 @@
   transform: translateY(0);
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+      -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* scrollbar minimalista */
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: #222222; }
+  ::-webkit-scrollbar-thumb { background: #383838; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #444444; }
 }
 
 /* Focus visible for accessibility */
