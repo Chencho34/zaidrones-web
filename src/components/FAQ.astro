@@ -29,7 +29,7 @@ const faqs = [
 ];
 ---
 
-<section class="py-20 md:py-28 bg-background">
+<section class="py-20 md:py-28 bg-background-light">
   <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
     <SectionHeader
       title="Preguntas frecuentes"
@@ -39,7 +39,7 @@ const faqs = [
     <div class="space-y-4">
       {faqs.map((faq) => (
         <details class="group rounded-xl border border-border bg-white overflow-hidden">
-          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer select-none hover:bg-background transition-colors">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer select-none hover:bg-background-light transition-colors">
             <span class="font-semibold text-text pr-4">{faq.question}</span>
             <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />

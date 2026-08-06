@@ -38,7 +38,7 @@ import { navLinks } from "../../constants";
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-background border-t border-border">
+  <div id="mobile-menu" class="hidden md:hidden bg-background-light border-t border-border">
     <div class="px-4 py-4 space-y-3">
       {navLinks.map((link) => (
         <a
@@ -66,11 +66,11 @@ import { navLinks } from "../../constants";
   window.addEventListener("scroll", () => {
     const currentScroll = window.scrollY;
     if (currentScroll > 50) {
-      header?.classList.add("bg-background/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
+      header?.classList.add("bg-background-light/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
       navLinks?.forEach((link) => link.classList.add("text-gray-900"))
       navLinks?.forEach((link) => link.classList.remove("text-white"))
     } else {
-      header?.classList.remove("bg-background/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
+      header?.classList.remove("bg-background-light/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
       navLinks?.forEach((link) => link.classList.remove("text-gray-900"))
       navLinks?.forEach((link) => link.classList.add("text-white"))
     }

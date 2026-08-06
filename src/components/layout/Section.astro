@@ -1,0 +1,17 @@
+---
+interface Props {
+  class?: string
+  variant?: "light" | "dark"
+}
+
+const { class: className, variant = "light" } = Astro.props;
+
+const backgrounds = {
+  light: "bg-background-light",
+  dark: "bg-background-dark",
+};
+---
+
+<section class:list={["w-full", className, backgrounds[variant]]}>
+  <slot />
+</section>
