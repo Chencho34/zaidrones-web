@@ -46,7 +46,15 @@ const BusinnesLines = [
   },
 ];
 
+const navLinks = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Nosotros", href: "#Nosotros" },
+  { label: "Equipo", href: "#equipo" },
+  { label: "Proyectos", href: "#proyectos" },
+  { label: "Contacto", href: "#contacto" },
+];
 
 export {
-  BusinnesLines
+  BusinnesLines,
+  navLinks
 }

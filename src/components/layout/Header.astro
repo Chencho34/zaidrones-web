@@ -2,14 +2,7 @@
 import logo from "../../assets/logo-zaidrones.png"
 import { Image } from "astro:assets";
 import Button from "../ui/Button.astro";
-
-const navLinks = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#Nosotros" },
-  { label: "Equipo", href: "#equipo" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { navLinks } from "../../constants";
 ---
 
 <header id="header" class="absolute top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -17,7 +10,6 @@ const navLinks = [
     <!-- Logo -->
     <a href="/" class="flex items-center gap-0.5 text-text font-bold text-2xl tracking-tight">
       <Image src={logo} alt="ZaiDrones Logo" class='w-44' />
-      <!-- <span class="text-primary">Zai</span>Drones -->
     </a>
     <!-- Desktop Nav -->
     <ul class="hidden md:flex items-center gap-8">
