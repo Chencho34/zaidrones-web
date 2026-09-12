@@ -6,10 +6,23 @@ import CardBusinessLine from "./ui/CardBusinessLine.astro";
 
 <section id="lineas-negocio" class="relative py-20 md:py-28 bg-background-light">  
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <SectionHeader
+    <!-- <SectionHeader
       title="Tres líneas. Un solo socio estratégico."
       subtitle="Desde la venta de equipo hasta la operación completa de seguridad aérea."
-    />
+    /> -->
+    <article class="reveal max-w-2xl mx-auto text-center mb-16">
+      <h2 class="font-display font-semibold text-[2rem] sm:text-[2.75rem] leading-[1.15] text-black tracking-tight">
+        Descubre nuestros servicios
+      </h2>
+      <p class="mt-5 text-base sm:text-lg text-gray-500/55 leading-relaxed">
+        Desde la venta de equipo hasta la operación completa de seguridad aérea.
+      </p>
+    </article>
+        <div class="reveal flex items-center gap-4 mb-16 max-w-6xl mx-auto" style="transition-delay:.05s">
+      <span class="h-px flex-1 bg-gray-500/10"></span>
+      <span class="w-1.5 h-1.5 rotate-45 border border-gray-500/25"></span>
+      <span class="h-px flex-1 bg-gray-500/10"></span>
+    </div>
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
       {
         BusinnesLines.map((line) => (

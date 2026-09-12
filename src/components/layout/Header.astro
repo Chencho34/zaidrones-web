@@ -5,39 +5,58 @@ import Button from "../ui/Button.astro";
 import { navLinks } from "../../constants";
 ---
 
-<header id="header" class="absolute top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-center sm:justify-between">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-0.5 text-text font-bold text-2xl tracking-tight">
-      <Image src={logo} alt="ZaiDrones Logo" class='w-44' />
+<header
+  id="header"
+  data-scrolled="false"
+  class="group/nav fixed top-0 left-0 right-0 z-50 transition-all duration-300 data-[scrolled=true]:bg-background-light/90 data-[scrolled=true]:backdrop-blur-lg data-[scrolled=true]:shadow-sm data-[scrolled=true]:shadow-border/5"
+>
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a
+      href="/"
+      class="rounded-md px-2 py-1 transition-colors duration-300 group-data-[scrolled=true]/nav:bg-transparent text-3xl text-white"
+    >
+      Chencho34
     </a>
-    <!-- Desktop Nav -->
-    <ul class="hidden md:flex items-center gap-8">
-      {navLinks.map((link) => (
-        <li>
-          <a 
-            id="links"
-            href={link.href}
-            class="text-sm font-medium transition-colors duration-200 hover:text-accent"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-    <!-- Mobile Menu Button -->
+
+    <div class="hidden md:flex items-center gap-8">
+      <ul class="flex items-center gap-8">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="nav-link text-sm font-medium text-white transition-colors duration-200 hover:text-accent group-data-[scrolled=true]/nav:text-text"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <Button
+        href="#contacto"
+        variant="primary"
+        class="!bg-accent !text-background-dark hover:!bg-primary-hover hover:!shadow-accent/20"
+      >
+        Cotizar Ahora
+      </Button>
+    </div>
+
     <button
       id="mobile-menu-btn"
-      class="md:hidden flex items-center justify-center w-10 h-10 text-text-secondary hover:text-text transition-colors"
+      type="button"
+      class="md:hidden flex items-center justify-center w-10 h-10 text-white hover:text-white/80 transition-colors group-data-[scrolled=true]/nav:text-text-secondary group-data-[scrolled=true]/nav:hover:text-text"
       aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
   </nav>
 
-  <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-background-light border-t border-border">
     <div class="px-4 py-4 space-y-3">
       {navLinks.map((link) => (
@@ -48,7 +67,11 @@ import { navLinks } from "../../constants";
           {link.label}
         </a>
       ))}
-      <Button href="#contacto" variant="primary" class="w-full mt-4">
+      <Button
+        href="#contacto"
+        variant="primary"
+        class="w-full mt-4 !bg-accent !text-background-dark hover:!bg-primary-hover"
+      >
         Cotizar Ahora
       </Button>
     </div>
@@ -59,33 +82,34 @@ import { navLinks } from "../../constants";
   const header = document.getElementById("header");
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
-  const navLinks = document.querySelectorAll("#links");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
 
-  // Header scroll effect
-  let lastScroll = 0;
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll > 50) {
-      header?.classList.add("bg-background-light/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
-      navLinks?.forEach((link) => link.classList.add("text-gray-900"))
-      navLinks?.forEach((link) => link.classList.remove("text-white"))
-    } else {
-      header?.classList.remove("bg-background-light/10", "backdrop-blur-lg", "shadow-sm", "shadow-border/5");
-      navLinks?.forEach((link) => link.classList.remove("text-gray-900"))
-      navLinks?.forEach((link) => link.classList.add("text-white"))
-    }
-    lastScroll = currentScroll;
-  });
+  const setScrolled = (scrolled: boolean) => {
+    header?.setAttribute("data-scrolled", String(scrolled));
+  };
 
-  // Mobile menu toggle
+  const setMenuOpen = (open: boolean) => {
+    mobileMenu?.classList.toggle("hidden", !open);
+    mobileMenuBtn?.setAttribute("aria-expanded", String(open));
+    mobileMenuBtn?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    iconOpen?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+  };
+
+  const onScroll = () => {
+    setScrolled(window.scrollY > 50);
+  };
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
   mobileMenuBtn?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
+    const isOpen = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+    setMenuOpen(!isOpen);
   });
 
-  // Close mobile menu on link click
   mobileMenu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu?.classList.add("hidden");
-    });
+    link.addEventListener("click", () => setMenuOpen(false));
   });
 </script>

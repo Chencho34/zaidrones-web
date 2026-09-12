@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string
+  centered?: boolean
+  variant?: "light" | "dark"
+}
+
+const { title, centered = true, variant } = Astro.props
+
+const 
+---
+
+<h2 class:list={["mb-12 md:mb-16", centered && "text-center"]}>
+  {title}
+</h2>

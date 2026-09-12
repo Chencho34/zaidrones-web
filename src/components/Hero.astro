@@ -7,16 +7,18 @@ import bgHeroVideo from "../assets/videos/hero-bg-video.mp4";
   <!-- Background image -->
   <div class="absolute inset-0">
     <video
+      id="hero-video"
       src={bgHeroVideo}
       class="w-full h-full object-cover"
       autoplay
       muted
       loop
+      playsinline
+      aria-hidden="true"
     />
-    <!-- Dark overlay for text readability -->
-    <div class="absolute inset-0 bg-background-light-dark/10"></div>
+    <div class="absolute inset-0 bg-background-dark/30"></div>
     <!-- Gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-background-dark/50 via-background-dark/70 to-background-dark/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-background-dark/50 via-background-dark/70 to-background-dark/80"></div>
   </div>
 
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -34,10 +36,10 @@ import bgHeroVideo from "../assets/videos/hero-bg-video.mp4";
 
       <!-- CTAs -->
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.2s;">
-        <Button href="#contacto" variant="primary" class="w-full sm:w-auto text-base px-8 py-4">
+        <Button href="#contacto" variant="primary" class="w-full sm:w-auto text-base px-8 py-4 !bg-accent !text-background-dark hover:!bg-primary-hover hover:!shadow-accent/20">
           Solicitar Demo Gratuita
         </Button>
-        <Button href="#servicios" variant="outline" class="w-full sm:w-auto text-white px-8 py-4">
+        <Button href="#servicios" variant="outline" class="w-full sm:w-auto px-8 py-4 !border-white/30 !text-white hover:!border-accent hover:!text-accent">
           Ver Servicios
         </Button>
       </div>
@@ -69,3 +71,10 @@ import bgHeroVideo from "../assets/videos/hero-bg-video.mp4";
   <!-- Bottom fade -->
   <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background-dark to-transparent"></div>
 </section>
+
+<script>
+  const video = document.getElementById("hero-video") as HTMLVideoElement | null;
+  if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.pause();
+  }
+</script>
