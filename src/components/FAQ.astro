@@ -1,6 +1,4 @@
 ---
-import SectionHeader from "./ui/SectionHeader.astro";
-
 const faqs = [
   {
     question: "¿Necesito comprar equipo para usar sus servicios?",
@@ -27,21 +25,41 @@ const faqs = [
     answer: "Tenemos cobertura en toda la República Mexicana. Nuestros servicios profesionales y el servicio administrado están disponibles a nivel nacional.",
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
-<section class="py-20 md:py-28 bg-background-light">
+<section id="faq" class="py-20 md:py-28 bg-background-light">
   <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-    <SectionHeader
-      title="Preguntas frecuentes"
-      subtitle="Resolvemos sus dudas más comunes."
-    />
+    <div class="mb-12 md:mb-16 text-center">
+      <p class="font-mono text-[11px] tracking-[0.22em] uppercase text-text-secondary mb-4">
+        Preguntas
+      </p>
+      <h2 class="text-3xl font-semibold tracking-tight text-text sm:text-4xl">
+        Preguntas frecuentes
+      </h2>
+      <p class="mt-4 text-lg text-text-secondary">
+        Sobre comprar equipo, contratar un proyecto o el servicio 24/7.
+      </p>
+    </div>
 
     <div class="space-y-4">
       {faqs.map((faq) => (
-        <details class="group rounded-xl border border-border bg-white overflow-hidden">
+        <details class="group border border-border bg-white overflow-hidden">
           <summary class="flex items-center justify-between px-6 py-5 cursor-pointer select-none hover:bg-background-light transition-colors">
             <span class="font-semibold text-text pr-4">{faq.question}</span>
-            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </summary>
@@ -53,3 +71,5 @@ const faqs = [
     </div>
   </div>
 </section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

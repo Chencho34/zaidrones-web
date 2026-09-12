@@ -1,6 +1,5 @@
 ---
 import logo from "../../assets/logo-zaidrones.png"
-import { Image } from "astro:assets";
 import Button from "../ui/Button.astro";
 import { navLinks } from "../../constants";
 ---
@@ -8,23 +7,27 @@ import { navLinks } from "../../constants";
 <header
   id="header"
   data-scrolled="false"
-  class="group/nav fixed top-0 left-0 right-0 z-50 transition-all duration-300 data-[scrolled=true]:bg-background-light/90 data-[scrolled=true]:backdrop-blur-lg data-[scrolled=true]:shadow-sm data-[scrolled=true]:shadow-border/5"
+  class="group/nav absolute top-0 left-0 right-0 z-50 transition-all duration-300 data-[scrolled=true]:bg-background-light/90 data-[scrolled=true]:backdrop-blur-lg data-[scrolled=true]:shadow-sm data-[scrolled=true]:shadow-border/5"
 >
-  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Principal">
     <a
       href="/"
-      class="rounded-md px-2 py-1 transition-colors duration-300 group-data-[scrolled=true]/nav:bg-transparent text-3xl text-white"
+      class="flex items-center gap-2.5 rounded-sm py-1"
     >
-      Chencho34
+      <img
+        src={logo.src}
+        alt="ZaiDrones"
+        class="w-[170px] brightness-0 invert group-data-[scrolled=true]/nav:brightness-100 group-data-[scrolled=true]/nav:invert-0"
+      />
     </a>
 
     <div class="hidden md:flex items-center gap-8">
-      <ul class="flex items-center gap-8">
+      <ul class="flex items-center gap-6 lg:gap-8">
         {navLinks.map((link) => (
           <li>
             <a
               href={link.href}
-              class="nav-link text-sm font-medium text-white transition-colors duration-200 hover:text-accent group-data-[scrolled=true]/nav:text-text"
+              class="nav-link text-sm font-medium text-white transition-colors duration-200 hover:text-accent group-data-[scrolled=true]/nav:text-text group-data-[scrolled=true]/nav:hover:text-primary-muted"
             >
               {link.label}
             </a>
@@ -36,33 +39,33 @@ import { navLinks } from "../../constants";
         variant="primary"
         class="!bg-accent !text-background-dark hover:!bg-primary-hover hover:!shadow-accent/20"
       >
-        Cotizar Ahora
+        Cotizar
       </Button>
     </div>
 
     <button
       id="mobile-menu-btn"
       type="button"
-      class="md:hidden flex items-center justify-center w-10 h-10 text-white hover:text-white/80 transition-colors group-data-[scrolled=true]/nav:text-text-secondary group-data-[scrolled=true]/nav:hover:text-text"
+      class="md:hidden flex items-center justify-center w-11 h-11 text-white hover:text-white/80 transition-colors group-data-[scrolled=true]/nav:text-text-secondary group-data-[scrolled=true]/nav:hover:text-text"
       aria-label="Abrir menú"
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
-      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
   </nav>
 
   <div id="mobile-menu" class="hidden md:hidden bg-background-light border-t border-border">
-    <div class="px-4 py-4 space-y-3">
+    <div class="px-4 py-4 space-y-1">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="block text-sm font-medium text-text-secondary hover:text-text py-2 transition-colors"
+          class="block text-sm font-medium text-text-secondary hover:text-text py-2.5 transition-colors"
         >
           {link.label}
         </a>
@@ -72,7 +75,7 @@ import { navLinks } from "../../constants";
         variant="primary"
         class="w-full mt-4 !bg-accent !text-background-dark hover:!bg-primary-hover"
       >
-        Cotizar Ahora
+        Cotizar
       </Button>
     </div>
   </div>

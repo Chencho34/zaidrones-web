@@ -1,60 +1,92 @@
 
 import { BusinessLine1, BusinessLine2, BusinessLine3 } from "../components/icons";
 
-const BusinnesLines = [
+const businessLines = [
   {
     img: "images/business-lines-bg-1.webp",
-    title: "Venta de Equipo",
+    index: "01",
+    title: "Venta de equipo",
     description:
-      "Distribuidor oficial DJI Enterprise y Pix4D. Drones industriales, payloads especializados y software de fotogrametría para proyectos de alto nivel.",
+      "Distribuidor oficial DJI Enterprise y Pix4D. Drones industriales, payloads y software de fotogrametría.",
     features: [
-      "DJI Matrice 400/4T/4E",
+      "DJI Matrice 400 / 4T / 4E",
       "DJI Dock 3",
       "Zenmuse H30T, L3, P1",
       "PIX4Dmapper",
     ],
-    href: "#",
-    icon: BusinessLine1
+    href: "#equipo",
+    icon: BusinessLine1,
+    badge: "Distribución",
+    featured: false,
   },
   {
     img: "images/business-lines-bg-2.webp",
-    title: "Servicios Profesionales",
+    index: "02",
+    title: "Servicios profesionales",
     description:
-      "Ofrecemos servicios profesionales de inspección, mapeo y monitoreo con drones para diversos sectores industriales.",
+      "Capturamos y procesamos datos aéreos por proyecto: mapeo, inspección, monitoreo y contenido visual.",
     features: [
-      "Inspección de Infraestructura",
-      "Mapeo Topográfico",
-      "Monitoreo Ambiental",
-      "Análisis de Datos Aéreos"
+      "Ortomosaico y nube de puntos",
+      "Inspección de infraestructura",
+      "Monitoreo puntual",
+      "Foto y video aéreo",
     ],
-    href: "#",
-    icon: BusinessLine2
+    href: "#servicios",
+    icon: BusinessLine2,
+    badge: "Por proyecto",
+    featured: false,
   },
   {
     img: "images/business-lines-bg-3.webp",
-    title: "Capacitación y Soporte",
+    index: "03",
+    title: "Vigilancia 24/7",
     description:
-      "Brindamos capacitación especializada y soporte técnico para el uso eficiente de drones y software relacionado.",
+      "No solo instalamos un drone. Administramos toda la operación desde nuestro centro de monitoreo.",
     features: [
-      "Cursos de Pilotaje de Drones",
-      "Capacitación en Fotogrametría",
-      "Soporte Técnico Especializado",
-      "Actualizaciones de Software",
+      "DJI Dock 3 instalado",
+      "Patrullaje autónomo",
+      "Pilotos especializados",
+      "Reportes de cada misión",
     ],
-    href: "#",
-    icon: BusinessLine3
+    href: "#servicio-administrado",
+    icon: BusinessLine3,
+    badge: "Premium",
+    featured: true,
   },
 ];
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#lineas-negocio" },
+  { label: "Vigilancia 24/7", href: "#servicio-administrado" },
   { label: "Equipo", href: "#equipo" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Contacto", href: "#contacto" },
 ];
 
+const heroPaths = [
+  {
+    index: "01",
+    label: "Servicios",
+    title: "Datos aéreos por proyecto",
+    href: "#servicios",
+  },
+  {
+    index: "02",
+    label: "Equipo",
+    title: "DJI Enterprise y Pix4D",
+    href: "#equipo",
+  },
+  {
+    index: "03",
+    label: "Vigilancia 24/7",
+    title: "Solicitar demo administrada",
+    href: "#servicio-administrado",
+    featured: true,
+  },
+];
+
 export {
-  BusinnesLines,
-  navLinks
+  businessLines,
+  navLinks,
+  heroPaths,
 }

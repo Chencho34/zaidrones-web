@@ -1,25 +1,67 @@
 ---
-import Button from "./ui/Button.astro";
+const intents = [
+  {
+    index: "01",
+    label: "Servicios",
+    title: "Cotizar un levantamiento o inspección",
+    href: "#contacto",
+  },
+  {
+    index: "02",
+    label: "Equipo",
+    title: "Cotizar DJI Enterprise o Pix4D",
+    href: "#contacto",
+  },
+  {
+    index: "03",
+    label: "Vigilancia 24/7",
+    title: "Solicitar demo del servicio administrado",
+    href: "#contacto",
+    featured: true,
+  },
+];
 ---
 
 <section class="py-20 md:py-28 bg-background-dark relative overflow-hidden">
-  <!-- Glow -->
-  <div class="absolute top-40 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-3 left-1/2 -translate-x-1/2 w-[520px] h-[320px] bg-accent/8 rounded-full blur-3xl pointer-events-none"></div>
 
-  <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-3xl font-bold tracking-tight text-text-inverse sm:text-4xl lg:text-5xl">
-      Proteja su operación con tecnología de vanguardia
-    </h2>
-    <p class="mt-6 text-lg text-text-inverse/70 max-w-2xl mx-auto">
-      Solicite una demostración gratuita y descubra cómo el servicio administrado de ZaiDrones puede transformar la seguridad de su empresa.
+  <div class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <p class="font-mono text-[11px] tracking-[0.22em] uppercase text-accent mb-4">
+      03 / Contacto
     </p>
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <Button href="#contacto" variant="primary" class="w-full sm:w-auto text-base px-8 py-4">
-        Solicitar Demo Gratuita
-      </Button>
-      <Button href="tel:+528123787930" variant="outline" class="w-full sm:w-auto text-base px-8 py-4 !border-text-inverse/20 !text-text-inverse hover:!border-primary hover:!text-primary">
-        Llamar: (81) 2378 7930
-      </Button>
+    <h2 class="text-3xl font-semibold tracking-tight text-text-inverse sm:text-4xl lg:text-5xl max-w-3xl">
+      ¿Qué necesita su operación?
+    </h2>
+    <p class="mt-5 text-lg text-text-inverse/65 max-w-xl">
+      Elija un camino. Lo atendemos en Monterrey o en cualquier punto del país.
+    </p>
+
+    <div class="mt-12 border-t border-white/12">
+      {intents.map((intent) => (
+        <a
+          href={intent.href}
+          class:list={[
+            "group flex items-center justify-between gap-6 py-6 sm:py-7 border-b border-white/12 transition-colors",
+            intent.featured ? "hover:bg-accent/8" : "hover:bg-white/4",
+          ]}
+        >
+          <div class="flex items-baseline gap-5 min-w-0">
+            <span class="font-mono text-[11px] tracking-[0.18em] text-accent shrink-0">{intent.index}</span>
+            <div class="min-w-0">
+              <p class="font-mono text-[10px] tracking-[0.16em] uppercase text-white/40 mb-1">{intent.label}</p>
+              <p class="text-lg sm:text-xl font-semibold text-text-inverse leading-snug">{intent.title}</p>
+            </div>
+          </div>
+          <span class="shrink-0 text-accent text-xl transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+            →
+          </span>
+        </a>
+      ))}
     </div>
+
+    <p class="mt-10 font-mono text-sm text-text-inverse/50">
+      O llame ahora:
+      <a href="tel:+528123787930" class="text-accent hover:underline ml-2">(81) 2378 7930</a>
+    </p>
   </div>
 </section>

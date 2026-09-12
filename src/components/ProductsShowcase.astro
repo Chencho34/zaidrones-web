@@ -1,71 +1,75 @@
 ---
-import SectionHeader from "./ui/SectionHeader.astro";
-import Badge from "./ui/Badge.astro";
-
 const products = [
   {
     name: "DJI Matrice 400",
     tagline: "Plataforma industrial de alto rendimiento",
     specs: ["Carga útil: hasta 6 kg", "Vuelo: hasta 59 min", "Altitud: 7,000 m", "Viento: 12 m/s"],
-    badge: "Inspección y Búsqueda",
+    badge: "Inspección",
   },
   {
     name: "DJI Matrice 4T",
     tagline: "Multisensor para cualquier misión",
     specs: ["RGB + Térmica + Telémetro", "Vuelo: hasta 49 min", "Altitud: 6,000 m", "Versatilidad total"],
-    badge: "Más Vendido",
+    badge: "Más vendido",
   },
   {
     name: "DJI Matrice 4E",
     tagline: "Precisión geoespacial extrema",
-    specs: ["Cámara gran angular de alta precisión", "Teleobjetivo integrado", "Telémetro láser", "Cartografía profesional"],
+    specs: ["Cámara gran angular", "Teleobjetivo integrado", "Telémetro láser", "Cartografía profesional"],
     badge: "Geoespacial",
   },
   {
     name: "DJI Dock 3",
     tagline: "Estación autónoma para operaciones 24/7",
     specs: ["IP56 resistente a clima", "Rango: -30°C a 50°C", "55 kg de peso", "Retorno automático"],
-    badge: "Servicio 24/7",
+    badge: "24/7",
+  },
+  {
+    name: "PIX4Dmapper",
+    tagline: "Fotogrametría profesional, distribución oficial",
+    specs: ["Captura → modelo 3D", "Medición e inspección", "Control de calidad", "Prueba 15 días"],
+    badge: "Software",
   },
 ];
 ---
 
 <section id="equipo" class="py-20 md:py-28 bg-background-dark text-text-inverse relative overflow-hidden">
-  <!-- Decorative -->
-  <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+  <div class="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
 
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <Badge variant="primary" class="mb-4">Distribuidor Oficial</Badge>
-      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-        Equipo DJI Enterprise
+    <div class="max-w-2xl mb-14">
+      <p class="font-mono text-[11px] tracking-[0.22em] uppercase text-accent mb-4">
+        Distribuidor oficial
+      </p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+        Equipo DJI Enterprise y Pix4D
       </h2>
-      <p class="mt-4 text-lg text-text-inverse/70 max-w-2xl mx-auto">
-        Tecnología de vanguardia para proyectos industriales de alta exigencia.
+      <p class="mt-4 text-lg text-text-inverse/65">
+        Hardware industrial y software de fotogrametría. Soporte técnico en cada compra.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid md:grid-cols-2 gap-px bg-white/10">
       {products.map((product) => (
-        <div class="group rounded-xl border border-text-inverse/10 bg-text-inverse/5 p-8 hover:border-primary/30 transition-all duration-300">
-          <div class="flex items-start justify-between mb-4">
+        <article class="bg-background-dark p-8 hover:bg-white/[0.03] transition-colors">
+          <div class="flex items-start justify-between gap-4 mb-5">
             <div>
-              <h3 class="text-2xl font-bold text-text-inverse">{product.name}</h3>
-              <p class="text-text-inverse/60 mt-1">{product.tagline}</p>
+              <h3 class="text-2xl font-semibold text-text-inverse">{product.name}</h3>
+              <p class="text-text-inverse/55 mt-1 text-sm">{product.tagline}</p>
             </div>
-            <Badge variant="primary">{product.badge}</Badge>
+            <span class="shrink-0 font-mono text-[10px] tracking-[0.16em] uppercase text-accent border border-accent/40 px-2 py-1">
+              {product.badge}
+            </span>
           </div>
-          <ul class="mt-6 grid grid-cols-2 gap-3">
+          <ul class="grid grid-cols-2 gap-3">
             {product.specs.map((spec) => (
-              <li class="flex items-center gap-2 text-sm text-text-inverse/70">
-                <svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
+              <li class="flex items-start gap-2 text-sm text-text-inverse/70">
+                <span class="text-accent mt-0.5" aria-hidden="true">▸</span>
                 {spec}
               </li>
             ))}
           </ul>
-        </div>
+        </article>
       ))}
     </div>
   </div>

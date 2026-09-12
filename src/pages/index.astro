@@ -7,26 +7,26 @@ import ManagedService from "../components/ManagedService.astro";
 import ServicesGrid from "../components/ServicesGrid.astro";
 import ProductsShowcase from "../components/ProductsShowcase.astro";
 import CaseStudies from "../components/CaseStudies.astro";
-import Testimonials from "../components/Testimonials.astro";
 import FAQ from "../components/FAQ.astro";
 import CTASection from "../components/CTASection.astro";
 ---
 
-<Layout title="Zaidrones - Landing" description="Drones profesionales para seguridad, inspección y captura de datos. Distribuidor oficial DJI Enterprise en México con +12 años de experiencia.">
+<Layout
+  title="ZaiDrones | Drones profesionales DJI Enterprise en México"
+  description="Distribuidor oficial DJI Enterprise y Pix4D. Venta de equipo, servicios de datos aéreos y vigilancia perimetral 24/7 administrada. +12 años en Monterrey."
+>
   <Hero />
   <SocialProof />
   <BusinessLines />
   <ManagedService />
   <ServicesGrid />
   <ProductsShowcase />
-  <CaseStudies />
-  <Testimonials />
-  <FAQ />
+  <!-- <CaseStudies /> -->
+  <!-- <FAQ /> -->
   <CTASection />
 </Layout>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {

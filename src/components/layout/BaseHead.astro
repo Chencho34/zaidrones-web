@@ -9,87 +9,62 @@ interface Props {
 }
 
 const {
-  title = "ZaiDrones — Drones Profesionales y Servicio Administrado 24/7",
-  description = "Distribuidor oficial DJI Enterprise en México. Venta de drones industriales, servicios de fotogrametría y servicio administrado de vigilancia perimetral 24/7.",
+  title = "ZaiDrones | Drones profesionales DJI Enterprise en México",
+  description = "Distribuidor oficial DJI Enterprise y Pix4D. Venta de equipo, servicios de datos aéreos y vigilancia perimetral 24/7 administrada. +12 años en Monterrey.",
   image = "/og-image.jpg",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, "https://zaidrones.com");
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "ZaiDrones",
+  url: "https://zaidrones.com",
+  image: "https://zaidrones.com/og-image.jpg",
+  telephone: "+52-81-2378-7930",
+  email: "contacto@zaidrones.com",
+  foundingDate: "2014",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Miravalle 215, Col. Miravalle",
+    addressLocality: "Monterrey",
+    addressRegion: "Nuevo León",
+    postalCode: "64660",
+    addressCountry: "MX",
+  },
+  areaServed: "MX",
+  description,
+};
 ---
 
-<!-- Fonts Preload  -->
-<link rel="preload" href={onestFont}  as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={onestFont} as="font" type="font/woff2" crossorigin />
 <link rel="preload" href={ibmPlexFont} as="font" type="font/woff2" crossorigin />
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
-<!-- SEO -->
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="author" content="Armando Crescencio" />
-<meta name="keywords" content="" />
+<meta name="author" content="ZaiDrones" />
+<meta name="robots" content="index, follow" />
 
-<!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
 <meta property="og:locale" content="es_MX" />
-<meta property="og:site_name" content="ZaiDrones - Landing" />
+<meta property="og:site_name" content="ZaiDrones" />
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
 
-<!-- Robots -->
-<meta name="robots" content="index, follow" />
-
-<!-- Preconnect fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
-/>
-
-<!-- JSON-LD Structured Data -->
-<!-- <script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://chencho-dev.vercel.app/#person",
-  "name": "Armando Crescencio",
-  "alternateName": "Chencho34",
-  "url": "https://chencho-dev.vercel.app/",
-  "image": "https://chencho-dev.vercel.app/avatar.webp",
-  "jobTitle": "Full Stack Developer",
-  "description": "": {
-    "@type": "ContactPoint",
-    "email": "armandocrescencio343@gmail.com",
-    "contactType": "personal"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Monterrey",
-    "addressRegion": "Nuevo León",
-    "addressCountry": "MX"
-  },
-  "sameAs": [
-    "https://github.com/Chencho34",
-    "https://www.linkedin.com/in/armando-cr/"
-  ],
-  "knowsAbout": [
-    "React", "Node.js", "TypeScript", "Next.js",
-    "Astro", "TailwindCSS", "PostgreSQL", "Docker"
-  ]
-})} /> -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
